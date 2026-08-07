@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f7f8fb" stroke="#d0d4dc" stroke-width="2"/>
+  <!-- transformer layers -->
+  <rect x="120" y="230" width="160" height="30" rx="6" fill="#dde3ee" stroke="#aab4c8"/>
+  <rect x="120" y="180" width="160" height="30" rx="6" fill="#dde3ee" stroke="#aab4c8"/>
+  <rect x="120" y="130" width="160" height="30" rx="6" fill="#dde3ee" stroke="#aab4c8"/>
+  <rect x="120" y="80" width="160" height="30" rx="6" fill="#dde3ee" stroke="#aab4c8"/>
+  <!-- dual paths -->
+  <path d="M 160 260 C 100 210 100 130 160 80" fill="none" stroke="#1772d0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 240 260 C 300 210 300 130 240 80" fill="none" stroke="#f09228" stroke-width="4" stroke-linecap="round"/>
+  <!-- arrowheads -->
+  <path d="M 160 80 l -10 14 l 16 2 z" fill="#1772d0"/>
+  <path d="M 240 80 l 10 14 l -16 2 z" fill="#f09228"/>
+  <text x="200" y="45" text-anchor="middle" font-family="Verdana, sans-serif" font-size="18" font-weight="bold" fill="#4a5468">Dual Path Attribution</text>
+</svg>
