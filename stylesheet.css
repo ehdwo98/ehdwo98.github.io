@@ -80,24 +80,24 @@ th,
 tr,
 p,
 a {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Lato', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Verdana, Helvetica, sans-serif;
   font-size: 14px;
 }
 
 strong {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Lato', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Verdana, Helvetica, sans-serif;
   font-size: 14px;
 }
 
 h2 {
   margin: 0;
   font-weight: normal;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Lato', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Verdana, Helvetica, sans-serif;
   font-size: 22px;
 }
 
 .papertitle {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Lato', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Verdana, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 700;
 }
@@ -105,7 +105,7 @@ h2 {
 .name {
   padding-top: 20px;
   margin: 0;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Lato', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Verdana, Helvetica, sans-serif;
   font-size: 32px;
 }
 
@@ -139,4 +139,68 @@ span.highlight {
     padding: 20px;
     display: inline-block;
     border-radius: 10px;
+}
+
+/* ===================== Language toggle (ko / en) ===================== */
+/* Each translatable block carries lang="ko" or lang="en"; <html lang> decides which one is shown. */
+html[lang="ko"] [lang="en"] { display: none !important; }
+html[lang="en"] [lang="ko"] { display: none !important; }
+
+html[lang="ko"] body { word-break: keep-all; }
+
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid #c8cdd8;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.lang-switch button {
+  font-family: 'Lato', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Verdana, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 12px;
+  border: 0;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+}
+
+.lang-switch button + button { border-left: 1px solid #c8cdd8; }
+
+.lang-switch button[aria-pressed="true"] {
+  background: #1e2a78;
+  color: #fff;
+  cursor: default;
+}
+
+.lang-switch button:not([aria-pressed="true"]):hover { color: #f09228; }
+
+/* ===================== Publications ===================== */
+.pub-group {
+  margin: 14px 16px 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.paper-subtitle {
+  font-size: 13px;
+  color: #666;
+}
+
+.paper-status {
+  font-size: 12px;
+  color: #8a4b00;
+  background: #fff4e5;
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.paper-desc {
+  margin: 8px 0 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #444;
 }

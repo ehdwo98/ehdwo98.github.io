@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
 
-    <title>Dong-Jae Koh</title>
+    <title>고동재 | Dong-Jae Koh</title>
 
     <meta name="author" content="Dong-Jae Koh" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+    />
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <script>
+      // 저장된 언어 설정을 렌더링 전에 적용해 깜빡임을 막습니다. 기본값은 한국어(ko).
+      (function () {
+        var lang = "ko";
+        try {
+          if (localStorage.getItem("lang") === "en") lang = "en";
+        } catch (e) {}
+        document.documentElement.setAttribute("lang", lang);
+      })();
+    </script>
   </head>
 
   <body>
+    <!--
+      언어 전환 규칙:
+        - 번역이 필요한 요소는 같은 자리에 lang="ko" 블록과 lang="en" 블록을 나란히 둡니다.
+        - <html lang="ko|en"> 값에 따라 stylesheet.css가 반대 언어 블록을 숨깁니다.
+        - 논문 제목·저자명처럼 양쪽에서 동일한 내용은 lang 속성 없이 한 번만 씁니다.
+    -->
     <table
       style="
         width: 100%;
@@ -30,6 +52,14 @@
       <tbody>
         <tr style="padding: 0px">
           <td style="padding: 0px">
+            <!-- ===================== Language switch ===================== -->
+            <div style="text-align: right; padding: 14px 16px 0 0">
+              <div class="lang-switch" role="group" aria-label="언어 / Language">
+                <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
+                <button type="button" data-lang="en" aria-pressed="false">English</button>
+              </div>
+            </div>
+
             <!-- ===================== Profile ===================== -->
             <table
               style="
@@ -61,9 +91,33 @@
                       class="name"
                       style="text-align: left; margin: 0; font-size: 23px"
                     >
-                      Dong-Jae Koh
+                      <span lang="ko"
+                        >고동재
+                        <span style="font-size: 15px; color: #666">(Dong-Jae Koh)</span></span
+                      >
+                      <span lang="en">Dong-Jae Koh</span>
                     </p>
-                    <p style="font-size: 15px">
+
+                    <!-- 소개: 한국어 -->
+                    <p style="font-size: 15px" lang="ko">
+                      <a
+                        href="https://www.knu.ac.kr/"
+                        style="font-size: inherit; color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">경북대학교</a
+                      >
+                      <a
+                        href="https://sites.google.com/view/knudeal/dacs-lab"
+                        style="font-size: inherit; color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">빅데이터·AI 융합 시스템 연구실(DACS Lab)</a
+                      >에서
+                      <a
+                        href="https://sites.google.com/view/yksuh"
+                        style="font-size: inherit; color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">서영균</a
+                      >
+                      교수님의 지도 아래 석사과정을 밟고 있습니다. 경북대학교
+                      컴퓨터학부 글로벌소프트웨어융합전공에서 학사 학위를
+                      받았습니다.
+                    </p>
+                    <!-- 소개: English -->
+                    <p style="font-size: 15px" lang="en">
                       I'm an M.S. student in the
                       <a
                         href="https://sites.google.com/view/knudeal/dacs-lab"
@@ -82,11 +136,21 @@
                       Kyungpook National University.
                     </p>
 
-                    <p style="font-size: 15px">
-                      My research focuses on the mechanistic interpretability of
-                      large language models. If you're interested in
-                      collaborating or discussing research ideas, please feel
-                      free to reach out anytime!
+                    <p style="font-size: 15px" lang="ko">
+                      언어 모델의 성능이 커짐에 따라, 저는 언어 모델을 다양한
+                      태스크에 적용·응용하는 연구와, 나아가 언어 모델의 내부
+                      메커니즘을 규명하는 연구를 함께 진행하고 있습니다. 이를
+                      통해 언어 모델을 안정적으로 구축하고 그 문제점을 파악하는
+                      것을 목표로 합니다. 연구 협업이나 아이디어 논의에 관심이
+                      있으시다면 언제든 편하게 연락 주세요!
+                    </p>
+                    <p style="font-size: 15px" lang="en">
+                      As language models grow more capable, my research applies
+                      them to a wide range of tasks and, going further, uncovers
+                      their internal mechanisms. The goal is to build language
+                      models reliably and to identify where and why they fail.
+                      If you're interested in collaborating or discussing
+                      research ideas, please feel free to reach out anytime!
                     </p>
 
                     <p style="text-align: left">
@@ -132,21 +196,52 @@
               <tbody>
                 <tr>
                   <td style="padding: 16px; width: 100%; vertical-align: middle">
-                    <h2>🔎 Research Interest</h2>
-                    <p>
-                      My research interests span natural language processing
-                      (NLP), with a current focus on understanding the inner
-                      workings of large language models. Recently, I have been
-                      particularly interested in:
+                    <h2>
+                      <span lang="ko">🔎 연구 관심사</span>
+                      <span lang="en">🔎 Research Interest</span>
+                    </h2>
+
+                    <p lang="ko">
+                      저의 연구 관심사는 자연어 처리(NLP) 전반에 걸쳐 있으며,
+                      언어 모델을 다양한 태스크에 적용·응용하는 연구에서
+                      출발해 언어 모델의 내부 메커니즘을 규명하는 연구로
+                      확장하고 있습니다. 최근 특히 관심을 두고 있는 주제는
+                      다음과 같습니다.
                     </p>
-                    <ul>
+                    <ul lang="ko">
+                      <li>
+                        언어 모델 적용 및 응용: 검색 증강 생성(RAG), 벡터
+                        데이터베이스(Vector DB), 멀티 에이전트(Multi-agent)
+                        시스템 등 언어 모델을 활용한 시스템 구축과 이를
+                        평가하기 위한 벤치마크 설계
+                      </li>
+                      <li>
+                        기계적 해석가능성(mechanistic interpretability): 회로
+                        발견(circuit discovery) 및 기여도 분석(attribution)
+                        기법 (예: EAP, attribution patching)
+                      </li>
+                      <li>
+                        해석가능성 기법에 대한 충실하고(faithful) 확장 가능한
+                        평가
+                      </li>
+                    </ul>
+
+                    <p lang="en">
+                      My research interests span natural language processing
+                      (NLP), starting from applying language models to diverse
+                      tasks and extending to uncovering their internal
+                      mechanisms. Recently, I have been particularly interested
+                      in:
+                    </p>
+                    <ul lang="en">
+                      <li>
+                        Applications of language models: retrieval-augmented
+                        generation (RAG), vector databases, multi-agent systems,
+                        and benchmark design for evaluating LLM-based systems
+                      </li>
                       <li>
                         Mechanistic interpretability: circuit discovery and
                         attribution methods (e.g., EAP, attribution patching)
-                      </li>
-                      <li>
-                        Understanding how architectural choices (e.g., SwiGLU)
-                        affect interpretability techniques
                       </li>
                       <li>
                         Faithful and scalable evaluation of interpretability
@@ -160,16 +255,43 @@
 
             <!-- ===================== Publications ===================== -->
             <div style="padding: 16px 16px 0 16px; margin-bottom: 0">
-              <h2 style="margin: 0 0 5px 0">📚 Publications</h2>
+              <h2 style="margin: 0 0 5px 0">
+                <span lang="ko">📚 논문 및 연구 성과</span>
+                <span lang="en">📚 Publications</span>
+              </h2>
               <div
                 class="footnote"
                 style="margin: 0; font-size: 0.9em; color: gray; line-height: 1"
               >
-                <p style="margin: 0">
+                <p style="margin: 0" lang="ko">
+                  <em><strong>*: </strong>공동 1저자(동등 기여)</em>
+                  &nbsp;
+                  <em><strong><sup>†</sup>: </strong>교신저자</em>
+                </p>
+                <p style="margin: 0" lang="en">
                   <em><strong>*: </strong> denotes equal contribution.</em>
                   <em><strong><sup>†</sup>: </strong> denotes corresponding author.</em>
                 </p>
               </div>
+
+              <p lang="ko" style="margin: 12px 0 0 0; color: #444">
+                언어 모델이 세상에 미치는 파장이 커짐에 따라, 언어 모델을
+                실생활에서 이롭게 활용하기 위한 연구와 함께, 언어 모델을
+                통제하며 안정적으로 사용하기 위해 특정 작업을 수행할 때의
+                내부 메커니즘을 규명하는 연구를 진행해 왔습니다.
+              </p>
+              <p lang="en" style="margin: 12px 0 0 0; color: #444">
+                As language models have an ever-growing impact on the world, my
+                work spans two threads: applying language models to real-world
+                problems, and uncovering the mechanisms by which they perform
+                specific tasks so that they can be controlled and used reliably.
+              </p>
+            </div>
+
+            <!-- ---------- 1. 언어 모델의 메커니즘 규명 ---------- -->
+            <div class="pub-group">
+              <span lang="ko">🔬 언어 모델의 메커니즘 규명</span>
+              <span lang="en">🔬 Understanding the Mechanisms of Language Models</span>
             </div>
 
             <table
@@ -186,8 +308,9 @@
                 <!--
                   논문 추가 방법: 아래 <tr> 블록을 복사해서 붙여넣고
                   썸네일 이미지(images/paper/)와 제목, 저자, 학회, 링크를 수정하세요.
+                  한국어/영어 설명은 각각 lang="ko" / lang="en" 블록에 작성합니다.
                 -->
-                <!-- Dual Path Attribution -->
+                <!-- Layer-wise Target Propagation (Dual Path Attribution) -->
                 <tr>
                   <td style="padding: 20px; width: 25%; vertical-align: middle">
                     <div>
@@ -195,19 +318,29 @@
                         src="images/paper/DPA.png"
                         width="100%"
                         style="max-width: 100%"
+                        alt="Layer-wise Target Propagation paper figure"
                       />
                     </div>
                   </td>
                   <td style="padding: 8px; width: 75%; vertical-align: middle">
                     <span class="papertitle"
-                      >Dual Path Attribution: Efficient Attribution for
-                      SwiGLU-Transformers through Layer-Wise Target
-                      Propagation</span
+                      >Layer-wise Target Propagation: Efficient Component Attribution through Target Centric Propagation</span
+                    >
+                    <span lang="ko"
+                      ><br /><span class="paper-subtitle"
+                        >층별 타깃 역전파: 타깃 중심 역전파를 통한 효율적인 구성 요소 기여도 분석</span
+                      ></span
                     >
                     <br />
                     Lasse M. Jantsch*, <u>Dong-Jae Koh*</u>, Seonghyeon Lee<sup>†</sup>, Young-Kyoon Suh<sup>†</sup>
                     <br />
-                    <em>ICML Mechanistic Interpretability Workshop</em>, 2026
+                    <em lang="ko"
+                      >EMNLP 2026 (Main) · 자연어 처리 최우수 학회 · 채택률 15.4% · ICML 2026 Mechanistic Interpretability Workshop에도 채택</em
+                    >
+                    <em lang="en"
+                      >EMNLP 2026 Main : Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing (Acceptance Rate: 15.4%)
+                      &amp; Previously accepted to the ICML 2026 Mech Interp Workshop</em
+                    >
                     <br />
                     <a
                       href="https://openreview.net/pdf/ccc47085d6fa9961343319ba0d1c04c7e5611b41.pdf"
@@ -218,7 +351,166 @@
                       href="https://github.com/lab-paper-code/dual_path_attribution"
                       style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Code</a
                     >
-                    <p></p>
+                    <p class="paper-desc" lang="ko">
+                      언어 모델이 특정 작업을 수행할 때 내부 구성 요소 중 어떤
+                      요소가 주요하게 사용되는지를 분석하는 구성 요소 기여도
+                      분석(component attribution) 연구입니다. 기존 기법들은
+                      정확성과 계산 효율성을 동시에 만족하지 못하는
+                      상충(trade-off) 문제가 있었습니다. 이를 해결하기 위해
+                      타깃 토큰을 층별로 역전파하여 각 구성 요소의 기여도를
+                      측정하는 기법을 제안했습니다. 그 결과 적은 수의 구성
+                      요소만으로도 원본 전체 모델보다 높은 정답 확률을
+                      기록하면서, 훨씬 낮은 계산 비용으로 기여도를 신속하게
+                      측정할 수 있었습니다.
+                    </p>
+                    <p class="paper-desc" lang="en">
+                      Component attribution asks which internal components a
+                      language model relies on when performing a given task.
+                      Existing methods face a trade-off: none achieves both
+                      accuracy and computational efficiency. We propose a method
+                      that propagates the target token backward layer by layer
+                      to measure each component's contribution. With only a
+                      small number of components, it reaches a higher probability
+                      of the correct answer than the original full model, while
+                      measuring contributions much faster and at a far lower
+                      computational cost.
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Rectified Edge Attribution Patching (작성 중) -->
+                <tr>
+                  <td style="padding: 20px; width: 25%; vertical-align: middle">
+                    <div>
+                      <img
+                        src="images/paper/RectifiedEAP.svg"
+                        width="100%"
+                        style="max-width: 100%"
+                        alt="Rectified Edge Attribution Patching"
+                      />
+                    </div>
+                  </td>
+                  <td style="padding: 8px; width: 75%; vertical-align: middle">
+                    <span class="papertitle"
+                      >Where Does the Noise Come From? Rectified Edge Attribution Patching for Accurate Circuit Discovery</span
+                    >
+                    <span lang="ko"
+                      ><br /><span class="paper-subtitle"
+                        >잡음은 어디에서 오는가? 정확한 회로 발견을 위한 엣지 어트리뷰션 패칭 정제</span
+                      ></span
+                    >
+                    <br />
+                    <!-- TODO: 공저자 목록 채우기 -->
+                    <u>Dong-Jae Koh</u> et al.
+                    <br />
+                    <span class="paper-status" lang="ko">작성 중 · NAACL 제출 예정</span>
+                    <span class="paper-status" lang="en">In preparation · Target venue: NAACL</span>
+                    <p class="paper-desc" lang="ko">
+                      언어 모델이 특정 작업을 수행할 때 활성화되는 엣지(구성
+                      요소 간 경로)의 집합인 회로(circuit)를 더 정확하면서도
+                      저비용으로 찾는 회로 발견(circuit discovery) 연구입니다.
+                      회로 발견에서는 구성 요소보다 훨씬 많은 수의 엣지
+                      기여도를 계산해야 하므로 주로 기울기 기반 기법(EAP)을
+                      사용하는데, 이는 매우 빠르지만 정확도가 낮다는 한계가
+                      있습니다. 본 연구에서는 기존 기법의 비용 효율성을
+                      유지하면서 정확도를 높이기 위해, 기울기 근사를 모델에
+                      적용할 때 발생하는 오차(잡음)를 모델 내부 연산자별로
+                      계산하고 각각을 보정하는 기법을 제안했습니다. 그 결과
+                      성능 평가에서 기존 대비 최대 3배 이상의 성능을
+                      기록했습니다.
+                    </p>
+                    <p class="paper-desc" lang="en">
+                      Circuit discovery aims to find the circuit, the set of
+                      edges (paths between components) a language model activates
+                      for a given task, both accurately and at low cost. Since
+                      the number of edges far exceeds the number of components,
+                      gradient-based methods such as Edge Attribution Patching
+                      (EAP) are commonly used: they are very fast but inaccurate.
+                      To improve accuracy while keeping the cost efficiency of
+                      existing methods, we quantify the error (noise) that the
+                      gradient approximation introduces at each type of operator
+                      inside the model and propose a rectification for each. The
+                      resulting method achieves up to 3x higher performance than
+                      existing methods.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- ---------- 2. 언어 모델의 적용 및 응용 ---------- -->
+            <div class="pub-group">
+              <span lang="ko">🛠️ 언어 모델의 적용 및 응용</span>
+              <span lang="en">🛠️ Applications of Language Models</span>
+            </div>
+
+            <table
+              style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px 10px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              "
+            >
+              <tbody>
+                <!-- DNBench (ACL ARR 심사 후 NAACL 제출 예정) -->
+                <tr>
+                  <td style="padding: 20px; width: 25%; vertical-align: middle">
+                    <div>
+                      <img
+                        src="images/paper/DNBench.svg"
+                        width="100%"
+                        style="max-width: 100%"
+                        alt="DNBench"
+                      />
+                    </div>
+                  </td>
+                  <td style="padding: 8px; width: 75%; vertical-align: middle">
+                    <span class="papertitle"
+                      >Can LLMs Normalize Databases? A Benchmark and Multi-Agent Framework for Schema Normalization</span
+                    >
+                    <span lang="ko"
+                      ><br /><span class="paper-subtitle"
+                        >언어 모델은 데이터베이스를 정규화할 수 있는가? 스키마 정규화를 위한 벤치마크와 멀티 에이전트 기법</span
+                      ></span
+                    >
+                    <br />
+                    <!-- TODO: 공저자 목록 채우기 -->
+                    <u>Dong-Jae Koh</u> et al.
+                    <br />
+                    <span class="paper-status" lang="ko">ACL Rolling Review 메타리뷰 점수 3.0 (&ldquo;I think this paper could be accepted to the Findings of the ACL&rdquo;) · 보완 후 NAACL 제출 예정</span>
+                    <span class="paper-status" lang="en">ACL Rolling Review meta-review score 3.0 (&ldquo;I think this paper could be accepted to the Findings of the ACL&rdquo;) · Revised version to be submitted to NAACL</span>
+                    <p class="paper-desc" lang="ko">
+                      데이터베이스 정규화는 많은 전문가와 높은 비용이 필요한
+                      작업입니다. 이러한 고비용 작업을 언어 모델로 자동화하기
+                      위해 3,275개 샘플의 데이터셋과 다각적 평가 지표를
+                      포함하는 벤치마크 DNBench를 제안했습니다. 데이터셋은
+                      복합 정규화 위반 샘플을 포함하며, 평가 지표는 필수
+                      조건을 다루는 의미적 측면, 부가 조건을 다루는 구조적
+                      측면, 그리고 LLM-as-a-Judge 기법을 활용한 논리적
+                      측면으로 구성됩니다. DNBench에서 범용 언어 모델을
+                      광범위하게 실험하여 기존 모델이 이 작업에서 실패하는
+                      원인들을 규명하고, 각 원인을 개선하는 멀티 에이전트
+                      기법을 제안하여 기존 언어 모델의 성능을 80% 이상
+                      향상시켰습니다.
+                    </p>
+                    <p class="paper-desc" lang="en">
+                      Database normalization requires many experts and is
+                      expensive. To automate this costly task with language
+                      models, we propose DNBench, a benchmark consisting of a
+                      3,275-sample dataset and multi-faceted evaluation metrics.
+                      The dataset includes samples with compound normalization
+                      violations, and the metrics cover a semantic aspect
+                      (mandatory conditions), a structural aspect (additional
+                      conditions), and a logical aspect evaluated with
+                      LLM-as-a-Judge. Through extensive experiments with
+                      general-purpose LLMs on DNBench, we identify why existing
+                      models fail at this task, and propose a multi-agent
+                      framework that addresses each cause, improving the
+                      performance of existing language models by more than 80%.
+                    </p>
                   </td>
                 </tr>
 
@@ -230,6 +522,7 @@
                         src="images/paper/FineCite.png"
                         width="100%"
                         style="max-width: 100%"
+                        alt="FineCite paper figure"
                       />
                     </div>
                   </td>
@@ -238,11 +531,21 @@
                       >FineCite: A Novel Approach for Fine-Grained Citation
                       Context Analysis</span
                     >
+                    <span lang="ko"
+                      ><br /><span class="paper-subtitle"
+                        >FineCite: 세밀한 인용 문맥 분석을 위한 새로운 접근 방식</span
+                      ></span
+                    >
                     <br />
                     Lasse M. Jantsch, <u>Dong-Jae Koh</u>, Seonghwan Yoon, Jisu
                     Lee, Anne Lauscher<sup>†</sup>, Young-Kyoon Suh<sup>†</sup>
                     <br />
-                    <em>ACL Findings</em>, 2025
+                    <em lang="ko"
+                      >ACL 2025 (Findings) · 자연어 처리 최우수 학회 · 채택률 16.6%</em
+                    >
+                    <em lang="en"
+                      >ACL 2025 Findings : Finding of the Association for Computational Linguistics (Acceptance Rate: 16.6%)</em
+                    >
                     <br />
                     <a
                       href="https://aclanthology.org/2025.findings-acl.1259.pdf"
@@ -253,7 +556,194 @@
                       href="https://github.com/lab-paper-code/FineCite"
                       style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Code</a
                     >
-                    <p></p>
+                    <p class="paper-desc" lang="ko">
+                      과학 논문에서 인용이 어떤 역할과 목적으로 사용되는지를
+                      분석하는 인용 문맥 분석(citation context analysis)
+                      연구입니다. 기존 연구들은 인용의 기능이나 의도를
+                      분류하는 체계에 집중한 반면, 분류의 근간이 되는 인용
+                      문맥 자체는 제한적으로 정의되어 과학적 담화의 풍부한
+                      정보를 담아내지 못했습니다. 이를 해결하기 위해 인용
+                      문구의 의미적 속성에 기반한 세밀한 인용 문맥 정의를
+                      제시하고, ACL Anthology 논문에서 추출한 1,056개의 인용
+                      문맥을 직접 주석하여 FineCite 코퍼스를 구축했으며,
+                      주석자 간 일치도 검증을 통해 데이터 품질을 확보했습니다.
+                      구축한 코퍼스로 학습한 추출 모델로 세밀한 문맥을
+                      추출하고 이를 분류에 활용한 결과, 기존 벤치마크에서
+                      최신 기법 대비 최대 25%의 성능 향상을 기록했습니다.
+                    </p>
+                    <p class="paper-desc" lang="en">
+                      Citation context analysis studies the roles and purposes
+                      that citations serve in scientific papers. Prior work
+                      focused on schemes for classifying citation function or
+                      intent, while the citation context itself, the basis of
+                      that classification, was defined narrowly and failed to
+                      capture the rich information of scientific discourse. We
+                      propose a fine-grained definition of citation context
+                      grounded in the semantic properties of citing text, and
+                      build the FineCite corpus by annotating 1,056 citation
+                      contexts extracted from ACL Anthology papers, verifying
+                      inter-annotator agreement to ensure data quality.
+                      Extracting fine-grained contexts with a model trained on
+                      this corpus and using them for classification yields up to
+                      25% improvement over state-of-the-art methods on existing
+                      benchmarks.
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- QRiousRAG (KSC 2024) -->
+                <tr>
+                  <td style="padding: 20px; width: 25%; vertical-align: middle">
+                    <div>
+                      <img
+                        src="images/paper/QRiousRAG.png"
+                        width="100%"
+                        style="max-width: 100%"
+                        alt="QRiousRAG model structure"
+                      />
+                    </div>
+                  </td>
+                  <td style="padding: 8px; width: 75%; vertical-align: middle">
+                    <span class="papertitle"
+                      >QRiousRAG: Retrieval Augmented Generation with Question-refinement using LLMs in Ambiguous Question Answering</span
+                    >
+                    <span lang="ko"
+                      ><br /><span class="paper-subtitle"
+                        >QRiousRAG: 모호한 질의응답에서 LLMs의 질의 정제를 통한 검색 증강 생성</span
+                      ></span
+                    >
+                    <br />
+                    <u>Dong-Jae Koh*</u>, Lasse M. Jantsch*, Hwanseong Joo, Young-Kyoon Suh<sup>†</sup>
+                    <br />
+                    <em lang="ko"
+                      >2024 한국소프트웨어종합학술대회 (KSC 2024), 한국정보과학회 · 논문집 pp. 1439–1441</em
+                    >
+                    <em lang="en"
+                      >Korea Software Congress 2024 (KSC 2024), Korean Institute of Information Scientists and Engineers (KIISE) · Proceedings pp. 1439–1441</em
+                    >
+                    <br />
+                    <a
+                      href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12042294"
+                      style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Paper</a
+                    >
+                    /
+                    <a
+                      href="https://github.com/lab-paper-code/QRiousRAG"
+                      style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Code</a
+                    >
+                    <p class="paper-desc" lang="ko">
+                      학부연구생 시절 공동 1저자로 참여한 연구로, RAG 시스템이
+                      모호한 질문에 대해 일관되고 신뢰할 수 있는 답변을
+                      생성하지 못하는 문제를 다룹니다. 기존 RAG 시스템은 입력
+                      질문에 답변 품질이 좌우되어 정보가 불완전하거나 여러
+                      해석이 가능한 질문에 취약합니다. 이를 해결하기 위해
+                      검색된 문서의 관련성을 LLM 자가 피드백으로 평가하는
+                      모듈과, 평가를 통과한 문서와 원 질의를 바탕으로 정제된
+                      후속 질문을 생성하는 모듈을 기존 RAG 파이프라인에 추가한
+                      QRiousRAG 프레임워크를 제안했습니다. 오픈소스 임베딩
+                      모델(NV-Embed-v2)과 생성 모델(Llama-3.1)을 직접
+                      설치·양자화하여 실험 환경을 구축했고, ASQA 벤치마크에서
+                      기존 최고 성능 모델 대비 Disambig-F1 46.9%, DR-Score
+                      41.3%로 가장 높은 성능을 기록했습니다. 프레임워크
+                      설계와 실험을 공동 주도했으며, RAG 파이프라인 전 과정을
+                      직접 구현했습니다.
+                    </p>
+                    <p class="paper-desc" lang="en">
+                      Work from my time as an undergraduate researcher,
+                      addressing the failure of RAG systems to produce
+                      consistent and reliable answers to ambiguous questions.
+                      Because answer quality depends on the input question,
+                      existing RAG systems are vulnerable to questions that are
+                      underspecified or open to multiple interpretations.
+                      QRiousRAG adds two modules to the standard RAG pipeline:
+                      one that evaluates the relevance of retrieved documents
+                      through LLM self-feedback, and one that generates refined
+                      follow-up questions from the documents that pass and the
+                      original query. Using a locally deployed and quantized
+                      open-source embedding model (NV-Embed-v2) and generator
+                      (Llama-3.1), QRiousRAG achieved the best results on the
+                      ASQA benchmark with a Disambig-F1 of 46.9 and a DR-Score of
+                      41.3, surpassing the previous state of the art. I co-led
+                      the framework design and experiments and implemented the
+                      entire RAG pipeline.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- ===================== Research Projects ===================== -->
+            <table
+              style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              "
+            >
+              <tbody>
+                <tr>
+                  <td style="padding: 16px; width: 100%; vertical-align: middle">
+                    <h2>
+                      <span lang="ko">🧪 연구 과제</span>
+                      <span lang="en">🧪 Research Projects</span>
+                    </h2>
+                    <ul>
+                      <li>
+                        <strong>
+                          <span lang="ko">범용 검색 증강 생성 성능 향상을 위한 차세대 벡터 데이터베이스 기술 연구</span>
+                          <span lang="en">Next-Generation Vector Database Technology for Improving General-Purpose Retrieval-Augmented Generation</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">2025.09 – 2026.08</span>
+                          <span lang="en">Sep 2025 – Aug 2026</span>
+                        </em>
+                        <br />
+                        <span lang="ko">한국연구재단 · 학생연구자 · 과제책임자: 서영균</span>
+                        <span lang="en">National Research Foundation of Korea (NRF) · Student Researcher · PI: Young-Kyoon Suh</span>
+                      </li>
+                      <li style="margin-top: 10px">
+                        <strong>
+                          <span lang="ko">경북대학교 자율군집소프트웨어연구센터</span>
+                          <span lang="en">KNU Autonomous Swarm Software Research Center</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">2025.07 – 2026.02</span>
+                          <span lang="en">Jul 2025 – Feb 2026</span>
+                        </em>
+                        <br />
+                        <span lang="ko">한국연구재단 · 학생연구자 · 과제책임자: 강순주</span>
+                        <span lang="en">National Research Foundation of Korea (NRF) · Student Researcher · PI: Soon Ju Kang</span>
+                      </li>
+                      <li style="margin-top: 10px">
+                        <strong>
+                          <span lang="ko">지능융합 소프트웨어 교육연구단 (BK21)</span>
+                          <span lang="en">Intelligence Convergence Software Education and Research Center (BK21)</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">2025.03 – 2026.08</span>
+                          <span lang="en">Mar 2025 – Aug 2026</span>
+                        </em>
+                        <br />
+                        <span lang="ko">한국연구재단 · BK21 참여학생 · 과제책임자: 탁병철</span>
+                        <span lang="en">National Research Foundation of Korea (NRF) · BK21 Participating Student · PI: Byungchul Tak</span>
+                      </li>
+                      <li style="margin-top: 10px">
+                        <strong>
+                          <span lang="ko">SW중심대학 (경북대학교)</span>
+                          <span lang="en">Software-Centered University Program (Kyungpook National University)</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">2025.03 – 2025.06</span>
+                          <span lang="en">Mar 2025 – Jun 2025</span>
+                        </em>
+                        <br />
+                        <span lang="ko">정보통신기획평가원(IITP) · 학생연구자 · 과제책임자: 고석주</span>
+                        <span lang="en">Institute of Information &amp; Communications Technology Planning &amp; Evaluation (IITP) · Student Researcher · PI: Seok Joo Koh</span>
+                      </li>
+                    </ul>
                   </td>
                 </tr>
               </tbody>
@@ -273,11 +763,36 @@
               <tbody>
                 <tr>
                   <td style="padding: 16px; width: 100%; vertical-align: middle">
-                    <h2>🏆 Honors and Awards</h2>
+                    <h2>
+                      <span lang="ko">🏆 수상 내역</span>
+                      <span lang="en">🏆 Honors and Awards</span>
+                    </h2>
                     <ul>
                       <li>
-                        <!-- TODO: 수상 내역으로 교체 -->
-                        Award Name – Organization, Year
+                        <strong>
+                          <span lang="ko">AIVLE BigProject Practical상</span>
+                          <span lang="en">AIVLE Big Project Practical Award</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">KT 에이블스쿨 · 2024.01</span>
+                          <span lang="en">KT AIVLE School · Jan 2024</span>
+                        </em>
+                        <br />
+                        <span lang="ko">사용자의 발표를 분석하는 AI 서비스로 AI 기반 서비스 개발 부문에서 수상했습니다.</span>
+                        <span lang="en">Awarded in the AI-based service development track for an AI service that analyzes users&rsquo; presentations.</span>
+                      </li>
+                      <li style="margin-top: 10px">
+                        <strong>
+                          <span lang="ko">2022 대구를 빛내는 SW해커톤 우수상</span>
+                          <span lang="en">Excellence Award, 2022 Daegu SW Hackathon</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">경북대학교 · 2022.10</span>
+                          <span lang="en">Kyungpook National University · Oct 2022</span>
+                        </em>
+                        <br />
+                        <span lang="ko">은둔청소년 문제 해소를 위한 서비스로 특별세션 부문에서 수상했습니다.</span>
+                        <span lang="en">Awarded in the special session track for a service addressing the issue of socially withdrawn youth.</span>
                       </li>
                     </ul>
                   </td>
@@ -299,13 +814,99 @@
               <tbody>
                 <tr>
                   <td style="padding: 16px; width: 100%; vertical-align: middle">
-                    <h2>📁 Experience</h2>
+                    <h2>
+                      <span lang="ko">📁 경력</span>
+                      <span lang="en">📁 Experience</span>
+                    </h2>
                     <ul>
                       <li>
-                        <!-- TODO: 경력/인턴십으로 교체 -->
-                        <strong>Position, Organization</strong>
-                        <br /><em>Team / Program, Year</em>
-                        <br />One-line description of what you worked on
+                        <strong>
+                          <span lang="ko">연구 인턴, 경북대학교 컴퓨터학부 DACS Lab</span>
+                          <span lang="en">Research Intern, DACS Lab, School of Computer Science &amp; Engineering, Kyungpook National University</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">2024.07 – 2025.02</span>
+                          <span lang="en">Jul 2024 – Feb 2025</span>
+                        </em>
+                        <br />
+                        <span lang="ko"
+                          >자연어 처리 연구를 진행하던 석사과정 선배의
+                          프로젝트에 연구 인턴으로 참여하여 실험 설계·수행과
+                          논문 작성을 담당했고, 그 결과가 ACL 2025 (Findings)에
+                          채택되었습니다.</span
+                        >
+                        <span lang="en"
+                          >Joined an NLP research project led by a master's
+                          student in the lab; designed and ran experiments and
+                          co-wrote the paper, which was accepted to Findings of
+                          ACL 2025.</span
+                        >
+                      </li>
+                      <li style="margin-top: 10px">
+                        <strong>
+                          <span lang="ko">KT 에이블스쿨(AIVLE School) 수료, KT</span>
+                          <span lang="en">KT AIVLE School, KT</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">2023.08 – 2024.01</span>
+                          <span lang="en">Aug 2023 – Jan 2024</span>
+                        </em>
+                        <br />
+                        <span lang="ko"
+                          >KT 주관 AI 실무 개발자 양성 프로그램을 수료했습니다.
+                          데이터 분석(EDA), ML/DL 이론 및 실습, AI 프로젝트
+                          구현 등을 수행했습니다.</span
+                        >
+                        <span lang="en"
+                          >Completed KT's hands-on AI developer training
+                          program. Covered data analysis (EDA), ML/DL theory and
+                          practice, and end-to-end AI project implementation.</span
+                        >
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- ===================== Languages & Certifications ===================== -->
+            <table
+              style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              "
+            >
+              <tbody>
+                <tr>
+                  <td style="padding: 16px; width: 100%; vertical-align: middle">
+                    <h2>
+                      <span lang="ko">📜 어학 및 자격</span>
+                      <span lang="en">📜 Languages and Certifications</span>
+                    </h2>
+                    <ul>
+                      <li>
+                        <strong>
+                          <span lang="ko">OPIc (영어) IH</span>
+                          <span lang="en">OPIc (English) Intermediate High (IH)</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">ACTFL · 2026.03</span>
+                          <span lang="en">ACTFL · Mar 2026</span>
+                        </em>
+                      </li>
+                      <li style="margin-top: 10px">
+                        <strong>
+                          <span lang="ko">AICE Associate</span>
+                          <span lang="en">AICE Associate</span>
+                        </strong>
+                        <br /><em>
+                          <span lang="ko">KT · 한국경제신문 · 2023.11</span>
+                          <span lang="en">KT &amp; The Korea Economic Daily · Nov 2023</span>
+                        </em>
                       </li>
                     </ul>
                   </td>
@@ -316,5 +917,36 @@
         </tr>
       </tbody>
     </table>
+
+    <script>
+      // 언어 전환 버튼: <html lang> 값을 바꾸고, 선택을 localStorage에 저장합니다.
+      (function () {
+        var titles = { ko: "고동재 | Dong-Jae Koh", en: "Dong-Jae Koh" };
+        var buttons = document.querySelectorAll(".lang-switch button");
+
+        function apply(lang, persist) {
+          document.documentElement.setAttribute("lang", lang);
+          document.title = titles[lang];
+          for (var i = 0; i < buttons.length; i++) {
+            var isActive = buttons[i].getAttribute("data-lang") === lang;
+            buttons[i].setAttribute("aria-pressed", isActive ? "true" : "false");
+          }
+          if (persist) {
+            try {
+              localStorage.setItem("lang", lang);
+            } catch (e) {}
+          }
+        }
+
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener("click", function () {
+            apply(this.getAttribute("data-lang"), true);
+          });
+        }
+
+        // 초기 상태 동기화 (head 스크립트가 이미 lang을 설정함)
+        apply(document.documentElement.getAttribute("lang") === "en" ? "en" : "ko", false);
+      })();
+    </script>
   </body>
 </html>

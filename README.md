@@ -4,10 +4,10 @@
 
 ## 파일 구조
 
-- `index.html` — 페이지 전체 (프로필, Research Interest, Publications, Awards, Experience). `TODO` 주석이 달린 곳을 본인 정보로 교체하세요.
+- `index.html` — 페이지 전체 (프로필, Research Interest, Publications, Awards, Experience). 한국어/영어 두 버전이 한 파일에 들어 있습니다. `TODO` 주석이 달린 곳을 본인 정보로 교체하세요.
 - `stylesheet.css` — 스타일 (Lato 폰트, 링크 색상 등)
 - `images/profile/` — 프로필 사진 (`profile.svg`를 본인 사진 `profile.jpg`로 교체 후 `index.html`의 경로 수정)
-- `images/paper/` — 논문 썸네일 이미지
+- `images/paper/` — 논문 썸네일 이미지 (논문 그림이 없을 때는 `DNBench.svg`처럼 간단한 SVG 카드를 사용)
 - `publish.sh` — GitHub 리포 생성 + 배포 스크립트
 
 ## 로컬 미리보기
@@ -33,9 +33,21 @@ git add -A && git commit -m "Update" && git push
 
 push 후 1~2분 뒤 https://ehdwo98.github.io 에서 확인할 수 있습니다.
 
+## 한국어 / English 전환
+
+페이지 우측 상단 버튼으로 언어를 전환합니다. 기본값은 한국어이고, 선택한 언어는 브라우저 `localStorage`에 저장되어 다음 방문에도 유지됩니다.
+
+번역이 필요한 요소는 같은 자리에 `lang="ko"` 블록과 `lang="en"` 블록을 나란히 둡니다. `<html lang>` 값에 따라 `stylesheet.css`가 반대 언어 블록을 숨깁니다. 논문 제목·저자명처럼 양쪽에서 같은 내용은 `lang` 없이 한 번만 씁니다.
+
+```html
+<p lang="ko">한국어 문단</p>
+<p lang="en">English paragraph</p>
+```
+
 ## 논문 추가 방법
 
 `index.html`의 Publications 테이블에서 `<tr>` 블록 하나를 복사해 붙여넣고:
 
 1. 썸네일 이미지를 `images/paper/`에 추가하고 `src` 경로 수정
 2. 제목(`papertitle` span), 저자, 학회/연도, Paper/Code 링크 수정
+3. 한국어 부제(`paper-subtitle`), 학회 표기(`<em lang="ko">` / `<em lang="en">`), 설명(`paper-desc`)을 각 언어로 작성
