@@ -251,3 +251,98 @@ html[lang="ko"] body { word-break: keep-all; }
 .paper-viewer-nav button:hover:not(:disabled) { color: #f09228; border-color: #f09228; }
 
 .paper-viewer-nav button:disabled { opacity: 0.35; cursor: default; }
+
+
+/* ===================== Zoom button & lightbox ===================== */
+.paper-thumb { position: relative; }
+.paper-thumb img { display: block; }
+
+.zoom-btn {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #c8cdd8;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #333;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.zoom-btn:hover { color: #f09228; border-color: #f09228; }
+
+/* 뷰어 안에서는 nav 줄에 인라인으로 배치 */
+.zoom-btn-inline {
+  position: static;
+  width: 26px;
+  height: 22px;
+  border-radius: 4px;
+  background: #f7f8fa;
+  box-shadow: none;
+  margin-left: 4px;
+}
+
+.paper-viewer-nav .paper-viewer-count { flex: 1; text-align: center; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: min(92vw, 1200px);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox button {
+  position: absolute;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #222;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+}
+
+.lightbox button:hover:not(:disabled) { color: #f09228; }
+.lightbox button:disabled { opacity: 0.3; cursor: default; }
+
+.lightbox-close { top: 16px; right: 16px; }
+.lightbox-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+.lightbox-count {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.lightbox[hidden],
+.lightbox [hidden] { display: none !important; }
+
+body.lightbox-open { overflow: hidden; }

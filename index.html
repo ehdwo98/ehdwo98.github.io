@@ -315,6 +315,7 @@
                         <button type="button" class="paper-viewer-prev" aria-label="Previous page">&#8249;</button>
                         <span class="paper-viewer-count">1 / 30</span>
                         <button type="button" class="paper-viewer-next" aria-label="Next page">&#8250;</button>
+                        <button type="button" class="zoom-btn zoom-btn-inline paper-viewer-zoom" aria-label="확대 / Zoom in" title="확대 / Zoom in"><i class="fas fa-search-plus"></i></button>
                       </div>
                     </div>
                   </td>
@@ -374,13 +375,14 @@
                 <!-- FineCite -->
                 <tr>
                   <td style="padding: 20px; width: 25%; vertical-align: middle">
-                    <div>
+                    <div class="paper-thumb">
                       <img
                         src="images/paper/FineCite.png"
                         width="100%"
                         style="max-width: 100%"
                         alt="FineCite paper figure"
                       />
+                      <button type="button" class="zoom-btn" data-zoom-src="images/paper/FineCite.png" aria-label="확대 / Zoom in" title="확대 / Zoom in"><i class="fas fa-search-plus"></i></button>
                     </div>
                   </td>
                   <td style="padding: 8px; width: 75%; vertical-align: middle">
@@ -451,13 +453,14 @@
                 <!-- QRiousRAG (KSC 2024) -->
                 <tr>
                   <td style="padding: 20px; width: 25%; vertical-align: middle">
-                    <div>
+                    <div class="paper-thumb">
                       <img
                         src="images/paper/QRiousRAG.png"
                         width="100%"
                         style="max-width: 100%"
                         alt="QRiousRAG model structure"
                       />
+                      <button type="button" class="zoom-btn" data-zoom-src="images/paper/QRiousRAG.png" aria-label="확대 / Zoom in" title="확대 / Zoom in"><i class="fas fa-search-plus"></i></button>
                     </div>
                   </td>
                   <td style="padding: 8px; width: 75%; vertical-align: middle">
@@ -554,13 +557,14 @@
                 <!-- Layer-wise Target Propagation (Dual Path Attribution) -->
                 <tr>
                   <td style="padding: 20px; width: 25%; vertical-align: middle">
-                    <div>
+                    <div class="paper-thumb">
                       <img
                         src="images/paper/DPA.png"
                         width="100%"
                         style="max-width: 100%"
                         alt="Layer-wise Target Propagation paper figure"
                       />
+                      <button type="button" class="zoom-btn" data-zoom-src="images/paper/DPA.png" aria-label="확대 / Zoom in" title="확대 / Zoom in"><i class="fas fa-search-plus"></i></button>
                     </div>
                   </td>
                   <td style="padding: 8px; width: 75%; vertical-align: middle">
@@ -622,13 +626,14 @@
                 <!-- Rectified Edge Attribution Patching (작성 중) -->
                 <tr>
                   <td style="padding: 20px; width: 25%; vertical-align: middle">
-                    <div>
+                    <div class="paper-thumb">
                       <img
                         src="images/paper/RectifiedEAP.svg"
                         width="100%"
                         style="max-width: 100%"
                         alt="Rectified Edge Attribution Patching"
                       />
+                      <button type="button" class="zoom-btn" data-zoom-src="images/paper/RectifiedEAP.svg" aria-label="확대 / Zoom in" title="확대 / Zoom in"><i class="fas fa-search-plus"></i></button>
                     </div>
                   </td>
                   <td style="padding: 8px; width: 75%; vertical-align: middle">
@@ -925,6 +930,15 @@
       </tbody>
     </table>
 
+    <!-- 확대 보기(라이트박스) -->
+    <div class="lightbox" id="lightbox" hidden>
+      <button type="button" class="lightbox-close" aria-label="닫기 / Close">&times;</button>
+      <button type="button" class="lightbox-prev" aria-label="Previous page" hidden>&#8249;</button>
+      <img class="lightbox-img" src="" alt="" />
+      <button type="button" class="lightbox-next" aria-label="Next page" hidden>&#8250;</button>
+      <div class="lightbox-count" hidden></div>
+    </div>
+
     <script>
       // 논문 페이지 뷰어: 좌우 버튼으로 페이지 이미지를 넘깁니다.
       (function () {
@@ -950,8 +964,76 @@
             prev.addEventListener("click", function () { show(page - 1); });
             next.addEventListener("click", function () { show(page + 1); });
             show(1);
+            // 라이트박스에서 페이지를 넘길 수 있도록 API 노출
+            el.viewerApi = {
+              total: total,
+              page: function () { return page; },
+              src: function (n) { return pattern.replace("{n}", pad(n)); },
+              show: show
+            };
           })(viewers[v]);
         }
+      })();
+
+      // 확대 보기(라이트박스): 확대 아이콘을 누르면 이미지를 크게 보여줍니다.
+      (function () {
+        var lb = document.getElementById("lightbox");
+        var img = lb.querySelector(".lightbox-img");
+        var closeBtn = lb.querySelector(".lightbox-close");
+        var prev = lb.querySelector(".lightbox-prev");
+        var next = lb.querySelector(".lightbox-next");
+        var count = lb.querySelector(".lightbox-count");
+        var api = null; // 뷰어에서 열린 경우 viewerApi
+
+        function render() {
+          if (!api) return;
+          var n = api.page();
+          img.src = api.src(n);
+          count.textContent = n + " / " + api.total;
+          prev.disabled = n === 1;
+          next.disabled = n === api.total;
+        }
+        function open(src, alt, viewerApi) {
+          api = viewerApi || null;
+          img.src = src;
+          img.alt = alt || "";
+          prev.hidden = next.hidden = count.hidden = !api;
+          if (api) render();
+          lb.hidden = false;
+          document.body.classList.add("lightbox-open");
+          closeBtn.focus();
+        }
+        function close() {
+          lb.hidden = true;
+          img.src = "";
+          api = null;
+          document.body.classList.remove("lightbox-open");
+        }
+
+        var btns = document.querySelectorAll(".zoom-btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            var viewer = this.closest(".paper-viewer");
+            if (viewer && viewer.viewerApi) {
+              open(viewer.viewerApi.src(viewer.viewerApi.page()), "", viewer.viewerApi);
+            } else {
+              var thumb = this.closest(".paper-thumb");
+              var source = thumb ? thumb.querySelector("img") : null;
+              open(this.getAttribute("data-zoom-src") || (source && source.src), source ? source.alt : "");
+            }
+          });
+        }
+        prev.addEventListener("click", function () { if (api) { api.show(api.page() - 1); render(); } });
+        next.addEventListener("click", function () { if (api) { api.show(api.page() + 1); render(); } });
+        closeBtn.addEventListener("click", close);
+        lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+        document.addEventListener("keydown", function (e) {
+          if (lb.hidden) return;
+          if (e.key === "Escape") close();
+          else if (e.key === "ArrowLeft" && api) { api.show(api.page() - 1); render(); }
+          else if (e.key === "ArrowRight" && api) { api.show(api.page() + 1); render(); }
+        });
       })();
 
       // 언어 전환 버튼: <html lang> 값을 바꾸고, 선택을 localStorage에 저장합니다.
