@@ -295,13 +295,27 @@
                 <!-- DNBench (ACL ARR 심사 후 NAACL 제출 예정) -->
                 <tr>
                   <td style="padding: 20px; width: 25%; vertical-align: middle">
-                    <div>
-                      <img
-                        src="images/paper/DNBench.png"
-                        width="100%"
-                        style="max-width: 100%"
-                        alt="DNBench paper first page"
-                      />
+                    <!-- 페이지 뷰어: data-pages(총 쪽수), data-src(경로 패턴, {n}은 두 자리 쪽 번호) -->
+                    <div
+                      class="paper-viewer"
+                      data-pages="30"
+                      data-src="images/paper/dnbench/page-{n}.jpg"
+                    >
+                      <a
+                        href="papers/DNBench.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="PDF 원본 열기 / Open the full PDF"
+                        ><img
+                          class="paper-viewer-page"
+                          src="images/paper/dnbench/page-01.jpg"
+                          alt="DNBench paper, page 1"
+                      /></a>
+                      <div class="paper-viewer-nav">
+                        <button type="button" class="paper-viewer-prev" aria-label="Previous page">&#8249;</button>
+                        <span class="paper-viewer-count">1 / 30</span>
+                        <button type="button" class="paper-viewer-next" aria-label="Next page">&#8250;</button>
+                      </div>
                     </div>
                   </td>
                   <td style="padding: 8px; width: 75%; vertical-align: middle">
@@ -912,6 +926,34 @@
     </table>
 
     <script>
+      // 논문 페이지 뷰어: 좌우 버튼으로 페이지 이미지를 넘깁니다.
+      (function () {
+        var viewers = document.querySelectorAll(".paper-viewer");
+        for (var v = 0; v < viewers.length; v++) {
+          (function (el) {
+            var total = parseInt(el.getAttribute("data-pages"), 10) || 1;
+            var pattern = el.getAttribute("data-src");
+            var img = el.querySelector(".paper-viewer-page");
+            var count = el.querySelector(".paper-viewer-count");
+            var prev = el.querySelector(".paper-viewer-prev");
+            var next = el.querySelector(".paper-viewer-next");
+            var page = 1;
+            function pad(n) { return n < 10 ? "0" + n : String(n); }
+            function show(n) {
+              page = Math.min(total, Math.max(1, n));
+              img.src = pattern.replace("{n}", pad(page));
+              img.alt = img.alt.replace(/page \d+/, "page " + page);
+              count.textContent = page + " / " + total;
+              prev.disabled = page === 1;
+              next.disabled = page === total;
+            }
+            prev.addEventListener("click", function () { show(page - 1); });
+            next.addEventListener("click", function () { show(page + 1); });
+            show(1);
+          })(viewers[v]);
+        }
+      })();
+
       // 언어 전환 버튼: <html lang> 값을 바꾸고, 선택을 localStorage에 저장합니다.
       (function () {
         var titles = { ko: "고동재 | Dong-Jae Koh", en: "Dong-Jae Koh" };

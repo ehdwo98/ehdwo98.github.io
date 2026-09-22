@@ -7,7 +7,8 @@
 - `index.html` — 페이지 전체 (프로필, Research Interest, Publications, Awards, Experience). 한국어/영어 두 버전이 한 파일에 들어 있습니다. `TODO` 주석이 달린 곳을 본인 정보로 교체하세요.
 - `stylesheet.css` — 스타일 (Lato 폰트, 링크 색상 등)
 - `images/profile/` — 프로필 사진 (`profile.svg`를 본인 사진 `profile.jpg`로 교체 후 `index.html`의 경로 수정)
-- `images/paper/` — 논문 썸네일 이미지 (논문 그림이 없을 때는 `RectifiedEAP.svg`처럼 간단한 SVG 카드를 사용)
+- `images/paper/` — 논문 썸네일 이미지 (논문 그림이 없을 때는 `RectifiedEAP.svg`처럼 간단한 SVG 카드를 사용). 페이지 뷰어용 이미지는 `images/paper/<논문>/page-01.jpg` 형식으로 두고 `index.html`의 `.paper-viewer` 블록에서 `data-pages`, `data-src`를 지정
+- `papers/` — 사이트에서 열 수 있는 논문 PDF 원본 (`.gitignore`의 `!papers/*.pdf` 예외로 배포됨)
 - `publish.sh` — GitHub 리포 생성 + 배포 스크립트
 
 ## 로컬 미리보기

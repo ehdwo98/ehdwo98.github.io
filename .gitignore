@@ -5,3 +5,4 @@ Thumbs.db
 # 개인 자료 PDF(주요성과.pdf 등)는 배포 제외. CV는 cv.pdf 이름으로 두면 포함됨
 *.pdf
 !cv.pdf
+!papers/*.pdf
