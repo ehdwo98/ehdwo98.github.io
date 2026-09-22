@@ -275,157 +275,7 @@
               </div>
             </div>
 
-            <!-- ---------- 1. 언어 모델의 메커니즘 규명 ---------- -->
-            <div class="pub-group">
-              <span lang="ko">🔬 언어 모델의 메커니즘 규명</span>
-              <span lang="en">🔬 Understanding the Mechanisms of Language Models</span>
-            </div>
-
-            <table
-              style="
-                width: 100%;
-                border: 0px;
-                border-spacing: 0px 10px;
-                border-collapse: separate;
-                margin-right: auto;
-                margin-left: auto;
-              "
-            >
-              <tbody>
-                <!--
-                  논문 추가 방법: 아래 <tr> 블록을 복사해서 붙여넣고
-                  썸네일 이미지(images/paper/)와 제목, 저자, 학회, 링크를 수정하세요.
-                  한국어/영어 설명은 각각 lang="ko" / lang="en" 블록에 작성합니다.
-                -->
-                <!-- Layer-wise Target Propagation (Dual Path Attribution) -->
-                <tr>
-                  <td style="padding: 20px; width: 25%; vertical-align: middle">
-                    <div>
-                      <img
-                        src="images/paper/DPA.png"
-                        width="100%"
-                        style="max-width: 100%"
-                        alt="Layer-wise Target Propagation paper figure"
-                      />
-                    </div>
-                  </td>
-                  <td style="padding: 8px; width: 75%; vertical-align: middle">
-                    <span class="papertitle"
-                      >Layer-wise Target Propagation: Efficient Component Attribution through Target Centric Propagation</span
-                    >
-                    <span lang="ko"
-                      ><br /><span class="paper-subtitle"
-                        >층별 타깃 역전파: 타깃 중심 역전파를 통한 효율적인 구성 요소 기여도 분석</span
-                      ></span
-                    >
-                    <br />
-                    Lasse M. Jantsch*, <u>Dong-Jae Koh*</u>, Seonghyeon Lee<sup>†</sup>, Young-Kyoon Suh<sup>†</sup>
-                    <br />
-                    <em lang="ko"
-                      >EMNLP 2026 (Main) · 자연어 처리 최우수 학회 · 채택률 15.4% · ICML 2026 Mechanistic Interpretability Workshop에도 채택</em
-                    >
-                    <em lang="en"
-                      >EMNLP 2026 Main : Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing (Acceptance Rate: 15.4%)
-                      &amp; Previously accepted to the ICML 2026 Mech Interp Workshop</em
-                    >
-                    <br />
-                    <a
-                      href="https://openreview.net/pdf/ccc47085d6fa9961343319ba0d1c04c7e5611b41.pdf"
-                      style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Paper</a
-                    >
-                    /
-                    <a
-                      href="https://github.com/lab-paper-code/dual_path_attribution"
-                      style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Code</a
-                    >
-                    <p class="paper-desc" lang="ko">
-                      언어 모델이 특정 작업을 수행할 때 내부 구성 요소 중 어떤
-                      요소가 주요하게 사용되는지를 분석하는 구성 요소 기여도
-                      분석(component attribution) 연구입니다. 기존 기법들은
-                      정확성과 계산 효율성을 동시에 만족하지 못하는
-                      상충(trade-off) 문제가 있었습니다. 이를 해결하기 위해
-                      타깃 토큰을 층별로 역전파하여 각 구성 요소의 기여도를
-                      측정하는 기법을 제안했습니다. 그 결과 적은 수의 구성
-                      요소만으로도 원본 전체 모델보다 높은 정답 확률을
-                      기록하면서, 훨씬 낮은 계산 비용으로 기여도를 신속하게
-                      측정할 수 있었습니다.
-                    </p>
-                    <p class="paper-desc" lang="en">
-                      Component attribution asks which internal components a
-                      language model relies on when performing a given task.
-                      Existing methods face a trade-off: none achieves both
-                      accuracy and computational efficiency. We propose a method
-                      that propagates the target token backward layer by layer
-                      to measure each component's contribution. With only a
-                      small number of components, it reaches a higher probability
-                      of the correct answer than the original full model, while
-                      measuring contributions much faster and at a far lower
-                      computational cost.
-                    </p>
-                  </td>
-                </tr>
-
-                <!-- Rectified Edge Attribution Patching (작성 중) -->
-                <tr>
-                  <td style="padding: 20px; width: 25%; vertical-align: middle">
-                    <div>
-                      <img
-                        src="images/paper/RectifiedEAP.svg"
-                        width="100%"
-                        style="max-width: 100%"
-                        alt="Rectified Edge Attribution Patching"
-                      />
-                    </div>
-                  </td>
-                  <td style="padding: 8px; width: 75%; vertical-align: middle">
-                    <span class="papertitle"
-                      >Where Does the Noise Come From? Rectified Edge Attribution Patching for Accurate Circuit Discovery</span
-                    >
-                    <span lang="ko"
-                      ><br /><span class="paper-subtitle"
-                        >잡음은 어디에서 오는가? 정확한 회로 발견을 위한 엣지 어트리뷰션 패칭 정제</span
-                      ></span
-                    >
-                    <br />
-                    <!-- TODO: 공저자 목록 채우기 -->
-                    <u>Dong-Jae Koh</u> et al.
-                    <br />
-                    <span class="paper-status" lang="ko">작성 중 · NAACL 제출 예정</span>
-                    <span class="paper-status" lang="en">In preparation · Target venue: NAACL</span>
-                    <p class="paper-desc" lang="ko">
-                      언어 모델이 특정 작업을 수행할 때 활성화되는 엣지(구성
-                      요소 간 경로)의 집합인 회로(circuit)를 더 정확하면서도
-                      저비용으로 찾는 회로 발견(circuit discovery) 연구입니다.
-                      회로 발견에서는 구성 요소보다 훨씬 많은 수의 엣지
-                      기여도를 계산해야 하므로 주로 기울기 기반 기법(EAP)을
-                      사용하는데, 이는 매우 빠르지만 정확도가 낮다는 한계가
-                      있습니다. 본 연구에서는 기존 기법의 비용 효율성을
-                      유지하면서 정확도를 높이기 위해, 기울기 근사를 모델에
-                      적용할 때 발생하는 오차(잡음)를 모델 내부 연산자별로
-                      계산하고 각각을 보정하는 기법을 제안했습니다. 그 결과
-                      성능 평가에서 기존 대비 최대 3배 이상의 성능을
-                      기록했습니다.
-                    </p>
-                    <p class="paper-desc" lang="en">
-                      Circuit discovery aims to find the circuit, the set of
-                      edges (paths between components) a language model activates
-                      for a given task, both accurately and at low cost. Since
-                      the number of edges far exceeds the number of components,
-                      gradient-based methods such as Edge Attribution Patching
-                      (EAP) are commonly used: they are very fast but inaccurate.
-                      To improve accuracy while keeping the cost efficiency of
-                      existing methods, we quantify the error (noise) that the
-                      gradient approximation introduces at each type of operator
-                      inside the model and propose a rectification for each. The
-                      resulting method achieves up to 3x higher performance than
-                      existing methods.
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <!-- ---------- 2. 언어 모델의 적용 및 응용 ---------- -->
+            <!-- ---------- 1. 언어 모델의 적용 및 응용 ---------- -->
             <div class="pub-group">
               <span lang="ko">🛠️ 언어 모델의 적용 및 응용</span>
               <span lang="en">🛠️ Applications of Language Models</span>
@@ -458,6 +308,8 @@
                     <span class="papertitle"
                       >Can LLMs Normalize Databases? A Benchmark and Multi-Agent Framework for Schema Normalization</span
                     >
+                    <span lang="ko" class="paper-subtitle">(해당 논문으로 학위논문 작성 중)</span>
+                    <span lang="en" class="paper-subtitle">(M.S. thesis in progress based on this work)</span>
                     <span lang="ko"
                       ><br /><span class="paper-subtitle"
                         >언어 모델은 데이터베이스를 정규화할 수 있는가? 스키마 정규화를 위한 벤치마크와 멀티 에이전트 기법</span
@@ -469,6 +321,11 @@
                     <br />
                     <span class="paper-status" lang="ko">ACL Rolling Review 메타리뷰 점수 3.0 (&ldquo;I think this paper could be accepted to the Findings of the ACL&rdquo;) · 보완 후 NAACL 제출 예정</span>
                     <span class="paper-status" lang="en">ACL Rolling Review meta-review score 3.0 (&ldquo;I think this paper could be accepted to the Findings of the ACL&rdquo;) · Revised version to be submitted to NAACL</span>
+                    <br />
+                    <a
+                      href="https://arxiv.org/pdf/2609.11141"
+                      style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Paper</a
+                    >
                     <p class="paper-desc" lang="ko">
                       데이터베이스 정규화는 많은 전문가와 높은 비용이 필요한
                       작업입니다. 이러한 고비용 작업을 언어 모델로 자동화하기
@@ -653,6 +510,156 @@
                       41.3, surpassing the previous state of the art. I co-led
                       the framework design and experiments and implemented the
                       entire RAG pipeline.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- ---------- 2. 언어 모델의 메커니즘 규명 ---------- -->
+            <div class="pub-group">
+              <span lang="ko">🔬 언어 모델의 메커니즘 규명</span>
+              <span lang="en">🔬 Understanding the Mechanisms of Language Models</span>
+            </div>
+
+            <table
+              style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px 10px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              "
+            >
+              <tbody>
+                <!--
+                  논문 추가 방법: 아래 <tr> 블록을 복사해서 붙여넣고
+                  썸네일 이미지(images/paper/)와 제목, 저자, 학회, 링크를 수정하세요.
+                  한국어/영어 설명은 각각 lang="ko" / lang="en" 블록에 작성합니다.
+                -->
+                <!-- Layer-wise Target Propagation (Dual Path Attribution) -->
+                <tr>
+                  <td style="padding: 20px; width: 25%; vertical-align: middle">
+                    <div>
+                      <img
+                        src="images/paper/DPA.png"
+                        width="100%"
+                        style="max-width: 100%"
+                        alt="Layer-wise Target Propagation paper figure"
+                      />
+                    </div>
+                  </td>
+                  <td style="padding: 8px; width: 75%; vertical-align: middle">
+                    <span class="papertitle"
+                      >Layer-wise Target Propagation: Efficient Component Attribution through Target Centric Propagation</span
+                    >
+                    <span lang="ko"
+                      ><br /><span class="paper-subtitle"
+                        >층별 타깃 역전파: 타깃 중심 역전파를 통한 효율적인 구성 요소 기여도 분석</span
+                      ></span
+                    >
+                    <br />
+                    Lasse M. Jantsch*, <u>Dong-Jae Koh*</u>, Seonghyeon Lee<sup>†</sup>, Young-Kyoon Suh<sup>†</sup>
+                    <br />
+                    <em lang="ko"
+                      >EMNLP 2026 (Main) · 자연어 처리 최우수 학회 · 채택률 15.4% · ICML 2026 Mechanistic Interpretability Workshop에도 채택</em
+                    >
+                    <em lang="en"
+                      >EMNLP 2026 Main : Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing (Acceptance Rate: 15.4%)
+                      &amp; Previously accepted to the ICML 2026 Mech Interp Workshop</em
+                    >
+                    <br />
+                    <a
+                      href="https://openreview.net/pdf/ccc47085d6fa9961343319ba0d1c04c7e5611b41.pdf"
+                      style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Paper</a
+                    >
+                    /
+                    <a
+                      href="https://github.com/lab-paper-code/dual_path_attribution"
+                      style="color: rgba(0, 0, 128, 0.668)" target="_blank" rel="noopener noreferrer">Code</a
+                    >
+                    <p class="paper-desc" lang="ko">
+                      언어 모델이 특정 작업을 수행할 때 내부 구성 요소 중 어떤
+                      요소가 주요하게 사용되는지를 분석하는 구성 요소 기여도
+                      분석(component attribution) 연구입니다. 기존 기법들은
+                      정확성과 계산 효율성을 동시에 만족하지 못하는
+                      상충(trade-off) 문제가 있었습니다. 이를 해결하기 위해
+                      타깃 토큰을 층별로 역전파하여 각 구성 요소의 기여도를
+                      측정하는 기법을 제안했습니다. 그 결과 적은 수의 구성
+                      요소만으로도 원본 전체 모델보다 높은 정답 확률을
+                      기록하면서, 훨씬 낮은 계산 비용으로 기여도를 신속하게
+                      측정할 수 있었습니다.
+                    </p>
+                    <p class="paper-desc" lang="en">
+                      Component attribution asks which internal components a
+                      language model relies on when performing a given task.
+                      Existing methods face a trade-off: none achieves both
+                      accuracy and computational efficiency. We propose a method
+                      that propagates the target token backward layer by layer
+                      to measure each component's contribution. With only a
+                      small number of components, it reaches a higher probability
+                      of the correct answer than the original full model, while
+                      measuring contributions much faster and at a far lower
+                      computational cost.
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Rectified Edge Attribution Patching (작성 중) -->
+                <tr>
+                  <td style="padding: 20px; width: 25%; vertical-align: middle">
+                    <div>
+                      <img
+                        src="images/paper/RectifiedEAP.svg"
+                        width="100%"
+                        style="max-width: 100%"
+                        alt="Rectified Edge Attribution Patching"
+                      />
+                    </div>
+                  </td>
+                  <td style="padding: 8px; width: 75%; vertical-align: middle">
+                    <span class="papertitle"
+                      >Where Does the Noise Come From? Rectified Edge Attribution Patching for Accurate Circuit Discovery</span
+                    >
+                    <span lang="ko"
+                      ><br /><span class="paper-subtitle"
+                        >잡음은 어디에서 오는가? 정확한 회로 발견을 위한 엣지 어트리뷰션 패칭 정제</span
+                      ></span
+                    >
+                    <br />
+                    <!-- TODO: 공저자 목록 채우기 -->
+                    <u>Dong-Jae Koh</u> et al.
+                    <br />
+                    <span class="paper-status" lang="ko">작성 중 · NAACL 제출 예정</span>
+                    <span class="paper-status" lang="en">In preparation · Target venue: NAACL</span>
+                    <p class="paper-desc" lang="ko">
+                      언어 모델이 특정 작업을 수행할 때 활성화되는 엣지(구성
+                      요소 간 경로)의 집합인 회로(circuit)를 더 정확하면서도
+                      저비용으로 찾는 회로 발견(circuit discovery) 연구입니다.
+                      회로 발견에서는 구성 요소보다 훨씬 많은 수의 엣지
+                      기여도를 계산해야 하므로 주로 기울기 기반 기법(EAP)을
+                      사용하는데, 이는 매우 빠르지만 정확도가 낮다는 한계가
+                      있습니다. 본 연구에서는 기존 기법의 비용 효율성을
+                      유지하면서 정확도를 높이기 위해, 기울기 근사를 모델에
+                      적용할 때 발생하는 오차(잡음)를 모델 내부 연산자별로
+                      계산하고 각각을 보정하는 기법을 제안했습니다. 그 결과
+                      성능 평가에서 기존 대비 최대 3배 이상의 성능을
+                      기록했습니다.
+                    </p>
+                    <p class="paper-desc" lang="en">
+                      Circuit discovery aims to find the circuit, the set of
+                      edges (paths between components) a language model activates
+                      for a given task, both accurately and at low cost. Since
+                      the number of edges far exceeds the number of components,
+                      gradient-based methods such as Edge Attribution Patching
+                      (EAP) are commonly used: they are very fast but inaccurate.
+                      To improve accuracy while keeping the cost efficiency of
+                      existing methods, we quantify the error (noise) that the
+                      gradient approximation introduces at each type of operator
+                      inside the model and propose a rectification for each. The
+                      resulting method achieves up to 3x higher performance than
+                      existing methods.
                     </p>
                   </td>
                 </tr>
