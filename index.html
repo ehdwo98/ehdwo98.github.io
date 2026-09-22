@@ -992,13 +992,12 @@
             var next = el.querySelector(".paper-viewer-next");
             var page = 1;
             function pad(n) { return n < 10 ? "0" + n : String(n); }
+            // 끝에서 누르면 반대편 끝으로 순환 (마지막 → 첫 페이지, 첫 → 마지막 페이지)
             function show(n) {
-              page = Math.min(total, Math.max(1, n));
+              page = ((n - 1) % total + total) % total + 1;
               img.src = pattern.replace("{n}", pad(page));
               img.alt = img.alt.replace(/page \d+/, "page " + page);
               count.textContent = page + " / " + total;
-              prev.disabled = page === 1;
-              next.disabled = page === total;
             }
             prev.addEventListener("click", function () { show(page - 1); });
             next.addEventListener("click", function () { show(page + 1); });
@@ -1029,8 +1028,6 @@
           var n = api.page();
           img.src = api.src(n);
           count.textContent = n + " / " + api.total;
-          prev.disabled = n === 1;
-          next.disabled = n === api.total;
         }
         function open(src, alt, viewerApi) {
           api = viewerApi || null;
